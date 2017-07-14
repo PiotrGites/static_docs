@@ -303,7 +303,7 @@ method are:
 -   `/usb_cam/image_raw` - name of topic to subscribe.
 
 -   `10` - message queue size. Messages are processed in order they come
-    in. In the case that node receives, in short time, more messages
+    in. In the case that node receives in short time more messages
     than this value, excessive messages will be dropped.
 
 -   `imageCallback` - function to process incoming messages.
@@ -356,14 +356,14 @@ You can use below `.launch` file:
 
 ### Receiving parameters ###
 
-Your node can receive parameters, they are used to customize behaviour
+Your node can receive parameters. They are used to customize behaviour
 of node e.g. subscribed topic name, device name or transmission speed
 for serial port.
 
-You will modify node to receive boolean parameter that defines if node
+You will modify your node to receive boolean parameter that defines if node
 should print image brightness to screen.
 
-To receive parameter you need variable to store its value, in this
+To receive parameter you need variable to store its value. In this
 example variable should have a global scope:
 
     bool print_b;
@@ -418,13 +418,13 @@ Your final code should look like this:
      }
 
 **Task 3** Run your node with parameter `print_brightness` set to `true`
-and again set to `false`. Observe how behaviour of node changes.
+and do it again with the parameter set to `false`. Observe how behaviour of node changes.
 
 ### Publishing topic ###
 
-You will modify node to publish brightness value to a new topic with
-message of type `std_msgs/UInt8`. Message `std_msgs/UInt8` is object
-with only one field `data`, which contain actual integer data.
+You will modify your node to publish brightness value to a new topic with
+message of type `std_msgs/UInt8`. Message `std_msgs/UInt8` is an object
+with only one field `data`, which contains actual integer data.
 
 Begin with including message header file:
 
@@ -508,13 +508,13 @@ upper toolbar. This should make graph more clear:
 
 ### Calling the service ###
 
-You will modify node to call to a service with message type
-`std_srvs/Empty`, this type has no field and can not carry any data, it
+You will modify your node to call to a service with message type
+`std_srvs/Empty`. This type has no field and can not carry any data. It
 can be used only for invoking action in another node and getting reply
 when its done.
 
 As a service provider we will use `image_saver` node from `image_view`
-package. `Image_saver` have one service named `save`. every time it is
+package. `Image_saver` have one service named `save`. Every time it is
 called, one frame from subscribed image topic is saved to hard drive.
 
 Desired node behaviour is to count incoming frames and call service once
@@ -533,12 +533,12 @@ message:
 
     frames_passed++;
 
-Create a client which will be caling to service:
+Create a client which will be calling to service:
 
     ros::ServiceClient client = n.serviceClient<std_srvs::Empty>("/image_saver/save");
 
 Here we use method `serviceClient` of `NodeHandle` object. Method has
-only one argument, it is the name of service. You also need to determine
+only one argument, it is the name of service. You also need to define
 message type for service: `std_srvs::Empty`.
 
 Instantiate message object:
@@ -601,8 +601,8 @@ Your final code should look like this:
 
 **Task 5** Build your node and run it with `usb_cam` and `image_saver`
 nodes. Use `rosnode`, `rostopic` and `rqt_graph` tools to examine system
-and check how data is passed between nodes. Let the nodes to work for a
-certain time, observe as new frames are being saved to your workspace
+and check how data is passed between nodes. Let the nodes work for a
+certain time and observe as new frames are being saved to your workspace
 directory.
 
 You can use below `.launch` file:
@@ -632,7 +632,7 @@ You can use below `.launch` file:
 
 You will modify node to provide a service, which returns information
 regarding how many images were saved. This service will have a message
-type `std_srvs/Trigger`, it has no field for request and two fields for
+type `std_srvs/Trigger`. It has no field for request and two fields for
 response: integer to indicate if service was triggered successfully or
 not and string for short summary of executed action.
 
@@ -657,8 +657,8 @@ Next, you need a function to execute when service is called:
     }
 
 Arguments for this function are pointers to request and response data.
-All services are called the same way, even if it does not carry any
-data, in that case these are pointer of void type.
+All services are called the same way even if it does not carry any
+data. In that case these are pointer of void type.
 
 Prepare string with response description:
 
@@ -670,7 +670,7 @@ Fill string field with data:
 
     res.message= str;
 
-Fill integer field with data, this mean service was executed properly:
+Fill integer field with data, which means that service was executed properly:
 
     res.success=1;
 
@@ -678,7 +678,7 @@ Finish function, response will be sent to requesting node:
 
     return true;
 
-next thing to do is to increment image counter after saving frame:
+Next thing to do is to increment image counter after saving frame:
 
     saved_imgs++;
 
