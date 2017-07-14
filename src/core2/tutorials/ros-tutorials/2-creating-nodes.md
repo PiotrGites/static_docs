@@ -68,7 +68,7 @@ Syntax of `catkin_create_pkg` is:
 
     catkin_create_pkg package_name [required packages]
 
-where `package_name` is desired package name and argument
+where `package_name` is desired package name, argument
 `required packages` is optional and contain names of packages that used
 by newly created package.
 
@@ -249,7 +249,7 @@ Image message is an object consisting of following fields:
 
 -   `string encoding` - pixel encoding definition
 
--   `uint8 is_bigendian` - is data expressed in bigendian manner
+-   `uint8 is_bigendian` - is data expressed in big-endian manner
 
 -   `uint32 step` - length of data for one row
 
