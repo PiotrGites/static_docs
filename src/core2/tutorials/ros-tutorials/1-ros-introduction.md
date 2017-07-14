@@ -360,7 +360,7 @@ topics.
 
 Now you have camera node running, but can not see yet image from it. You
 will use node `image_view` from `image_view` package. This node by
-default subscribe to topic `image`. You need to remap this name to topic
+default subscribes to topic `image`. You need to remap this name to topic
 published by camera node. If you performed task 1, you should know that
 camera node is publishing to topic `/usb_cam/image_raw`. To run image
 view node with remapping topic name type in terminal:
