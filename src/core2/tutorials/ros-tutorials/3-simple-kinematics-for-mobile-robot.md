@@ -14,7 +14,7 @@ order: 3
 
 Task of forward kinematics in mobile robotics is to determine robot
 position and orientation based on wheel rotation measurement. In this
-tutorial we will use four wheeled robot with separate drive for each
+tutorial we will use four-wheeled robot with separate drive for each
 wheel. Robot scheme is presented below:
 
 <div><center><img src="https://raw.githubusercontent.com/husarion/static_docs/master/src/assets/img/ros/robot_scheme.png" width="50%" height="50%"/></center></div>
@@ -42,9 +42,9 @@ We will use following symbols and their meaning:
 -   ω - wheel angular speed
 -   r - wheel radius
 
-To determine robot position we need robot kinematic model, it is much
+To determine robot position we need a robot kinematic model. It is much
 easier to calculate position for two wheeled robot with rotation centre
-between them. We can simplify our four wheeled robot to this model by
+between them. We can simplify our four-wheeled robot to this model by
 adding two virtual wheels (marked as W<sub>L</sub> and W<sub>R</sub> on the scheme).
 Their speed and position will be average for front and left wheel:
 
@@ -227,8 +227,8 @@ Subscribe to topic:
 
     nh.subscribe(sub);
 
-Define reversed polarity for left front and rear motors, this may vary,
-depending on your machine configuration:
+Define reversed polarity for left front and rear motors (this may vary
+depending on your machine configuration):
 
     hMot3.setMotorPolarity(Polarity::Reversed);
     hMot3.setEncoderPolarity(Polarity::Reversed);
@@ -590,21 +590,21 @@ Application main view consists of:
 
 4.  Object manipulation buttons
   
-By default you will see only base frame, to add any other object push
+By default you will see only base frame. To add any other object push
 **Add** from object manipulation buttons. In new window, there are two
-tabs **By display type** and **By topic**. First one is for manual
+tabs: **By display type** and **By topic**. First one is for manual
 selection from all possible objects, second one contains only currently
 published topics.
 
 After you choose object to display, click **OK** button and it will
 appear in visualization window.
 
-Now we will visualize position published by your robot, run `rviz`,
+Now we will visualize position published by your robot. Run `rviz`,
 click **Add** and choose tab **By topic**.
 
 <div><center><img src="https://raw.githubusercontent.com/husarion/static_docs/master/src/assets/img/ros/man_3_4.png" /></center></div>
 
-Find topic `/pose` and choose `Pose` and click **OK**.
+Find topic `/pose`, choose `Pose` and click **OK**.
 
 Then in visualized items list find position `Fixed Frame` and change it
 to `robot`.
